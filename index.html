@@ -53,7 +53,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              <p id="dayyoos">Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
 
@@ -65,5 +65,14 @@
 
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      if (!localStorage.pageLoadCount)
+      localStorage.pageLoadCount = 0;
+      localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount) + 1;
+     $("#dayyoos").text(localStorage.pageLoadCount);
+     });
+    </script>
+    
   </body>
 </html>
