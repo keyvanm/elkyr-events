@@ -1,69 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="Elkyr Events">
-    <meta name="author" content="k1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="lively">
+		<meta name="author" content="k1">
 
-    <title>Cover Template for Bootstrap</title>
+		<title>Lively</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="cover.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
-  <body>
+		<style type="text/css">
+			.pref-select {
+				display: inline-block;
+				border-style: solid;
+   				border-width: thin;
+   				border-color: black;
+   				border-radius: 1000px;
+   				width: 100px;
+   				height: 100px;
+   				/*padding: 50px;*/
+   				text-align: center;
+			}
+			.pref-select > span {
+				display: inline-block;
+				vertical-align: middle;
+				line-height:98px
+			}
+		</style>
+	</head>
+	<body>
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
 
-    <div class="site-wrapper">
+					<div class="masthead clearfix">
+						<div class="inner">
+							<h3 class="masthead-brand">Lively</h3>
+							<nav>
+								<ul class="nav masthead-nav">
+									<li class="active"><a href="#">Home</a></li>
+									<li><a href="#">Features</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					
+					<div id="master-frame">
+						<div class="inner cover" id="lively-home">
+							<h1 class="cover-heading">Lively Events</h1>
+							<p class="lead">Lively is a mood based event search app</p>
+							<p class="lead">
+								<a href="#" id="get-started" class="btn btn-lg btn-default">Get Started!</a>
+							</p>
+						</div>
 
-      <div class="site-wrapper-inner">
+						<div class="inner cover hidden" id="lively-name">
+							<h2 class="cover-heading">What's up?</h2>
 
-        <div class="cover-container">
+							<div class="form-group">
+								<input class="form-control" placeholder="What's your name?" id="user-name-input">
+							</div>
+							<div class="form-group">
+								<a href="#" id="name-in" class="btn btn-lg btn-default">Dope!</a>
+							</div>
+						</div>
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Cover</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+						<div class="inner cover hidden" id="lively-age">
+							<h2 class="cover-heading">Hi <span id="user-name"></span>! Let's get to know each other</h2>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>
-          </div>
+							<div class="form-group">
+								<input type="number" class="form-control" placeholder="How old are you?" id="user-age-input">
+							</div>
+							<div class="form-group">
+								<a href="#" id="age-in" class="btn btn-lg btn-default">Alright</a>
+							</div>
+						</div>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-          </div>
+						<div class="inner cover hidden" id="lively-extraversion">
+							<h2 class="cover-heading">Which of these two sounds more fun?</h2>
 
-        </div>
+							<div>
+								<a class="pref-select pref-select-ext" data-value="extrovert" href="#"><span>Partying</span></a>
+								<a class="pref-select pref-select-ext" data-value="introvert" href="#"><span>Reading</span></a>
+							</div>
+						</div>
 
-      </div>
+						<div class="inner cover hidden" id="lively-doors">
+							<h2 class="cover-heading">Where would you rather be?</h2>
 
-    </div>
+							<div>
+								<a class="pref-select pref-select-doors" data-value="indoors" href="#"><span>Indoors</span></a>
+								<a class="pref-select pref-select-doors" data-value="outdoors" href="#"><span>Outdoors</span></a>
+							</div>
+						</div>
 
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  </body>
+						<div class="inner cover hidden" id="lively-dresscode">
+							<h2 class="cover-heading">Suit up or casual?</h2>
+
+							<div>
+								<a class="pref-select pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a>
+								<a class="pref-select pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a>
+							</div>
+						</div>
+
+						<div class="inner cover hidden" id="lively-sentence">
+							<h2 class="cover-heading">Suit up or casual?</h2>
+
+							<div>
+								<a class="pref-select pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a>
+								<a class="pref-select pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="mastfoot hidden">
+						<div class="inner">
+							<p>2015 Elkyr inc.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#get-started").click(function(){
+					$("#lively-home").addClass("hidden");
+					$("#lively-name").removeClass("hidden");
+				});
+
+				$("#name-in").click(function(){
+					$("#user-name").text($("#user-name-input").val());
+					$("#lively-name").addClass("hidden");
+					$("#lively-age").removeClass("hidden");
+				});
+
+				$("#age-in").click(function(){
+					$("#lively-age").addClass("hidden");
+					$("#lively-extraversion").removeClass("hidden");
+				});
+
+				$(".pref-select-ext").click(function(){
+					$("#lively-extraversion").addClass("hidden");
+					$("#lively-doors").removeClass("hidden");
+				});
+
+				$(".pref-select-doors").click(function(){
+					$("#lively-doors").addClass("hidden");
+					$("#lively-dresscode").removeClass("hidden");
+				});
+
+				$(".pref-select-dresscode").click(function(){
+					$("#lively-dresscode").addClass("hidden");
+					// $("#lively-dresscode").removeClass("hidden");
+				});
+
+			});
+		</script>
+	</body>
 </html>
