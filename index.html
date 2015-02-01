@@ -115,9 +115,9 @@
 
 						<div class="inner cover my-hidden" id="lively-extraversion">
 							<h2 class="cover-heading">Which of these two sounds more fun?</h2>
-							<div class="form-group">
-								<a class="pref-select pref-select-ext" data-value="extrovert" href="#"><span>Partying</span></a>
-								<a class="pref-select pref-select-ext" data-value="introvert" href="#"><span>Reading</span></a>
+							<div class="form-group row">
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-ext" data-value="extrovert" href="#"><span>Partying</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-ext" data-value="introvert" href="#"><span>Reading</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="ext-in" class="btn btn-lg btn-default">Next</a>
@@ -126,9 +126,9 @@
 
 						<div class="inner cover my-hidden" id="lively-doors">
 							<h2 class="cover-heading">Where would you rather be?</h2>
-							<div class="form-group">
-								<a class="pref-select pref-select-doors" data-value="indoors" href="#"><span>Indoors</span></a>
-								<a class="pref-select pref-select-doors" data-value="outdoors" href="#"><span>Outdoors</span></a>
+							<div class="form-group row">
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-doors" data-value="indoors" href="#"><span>Indoors</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-doors" data-value="outdoors" href="#"><span>Outdoors</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="doors-in" class="btn btn-lg btn-default">Next</a>
@@ -137,9 +137,9 @@
 
 						<div class="inner cover my-hidden" id="lively-dresscode">
 							<h2 class="cover-heading">Suit up or casual?</h2>
-							<div class="form-group">
-								<a class="pref-select pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a>
-								<a class="pref-select pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a>
+							<div class="form-group row">
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="dresscode-in" class="btn btn-lg btn-default">Next</a>
@@ -371,12 +371,14 @@
 		}
 
 		function prefSelect (thisElem, selector, lsKey) {
-			localStorage.setItem(lsKey, $(thisElem).data("value"));
-			$(selector).not($(thisElem)).invisible();
-			$(thisElem).animate({width: "+=20", height: "+=20"}, 100, function(){
-				$(selector).not($(thisElem)).visible();
-			});
-			$(thisElem).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+			var val = $(thisElem).data("value")
+			if (localStorage.getItem(lsKey) != val){
+				localStorage.setItem(lsKey, val);
+				$(thisElem).animate({width: "140px", height: "140px"}, 100);
+				$(thisElem).children('span').animate({'line-height': '140px', 'font-size': '25px'}, 100);
+				$(selector).not($(thisElem)).animate({width: "100px", height: "100px"}, 100);
+				$(selector).not($(thisElem)).children('span').animate({'font-size': '20px', 'line-height': '98px'}, 100);
+			}
 		}
 
 		$(function(){
@@ -406,6 +408,7 @@
 				if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
 					loadSentence();
 				} else {
+					localStorage.clear();
 					myHide('.inner.cover:not(.my-hidden)');
 					myShow("#lively-name");
 					myShow(".progress");
@@ -431,12 +434,7 @@
 			});
 
 			$(".pref-select-ext").click(function(){
-				localStorage.user_ext = $(this).data("value");
-				$(".pref-select-ext").not($(this)).invisible();
-				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
-					$(".pref-select-ext").not($(this)).visible();
-				});
-				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+				prefSelect(this, ".pref-select-ext", "user_ext");
 			});
 
 			$("#ext-in").click(function(){
@@ -446,12 +444,7 @@
 			});
 
 			$(".pref-select-doors").click(function(){
-				localStorage.user_doors = $(this).data("value");
-				$(".pref-select-doors").not($(this)).invisible();
-				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
-					$(".pref-select-doors").not($(this)).visible();
-				});
-				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+				prefSelect(this, ".pref-select-doors", "user_doors");
 			});
 
 			$("#doors-in").click(function(){
@@ -461,12 +454,7 @@
 			});
 
 			$(".pref-select-dresscode").click(function(){
-				localStorage.user_dresscode = $(this).data("value");
-				$(".pref-select-dresscode").not($(this)).invisible();
-				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
-					$(".pref-select-dresscode").not($(this)).visible();
-				});
-				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+				prefSelect(this, ".pref-select-dresscode", "user_dresscode");
 			});
 
 			$("#dresscode-in").click(function(){
