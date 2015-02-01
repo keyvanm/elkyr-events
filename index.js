@@ -34,7 +34,7 @@ function myShow (selector) {
 function loadSentence() {
 	myHide('.inner.cover:not(.my-hidden)');
 	myShow("#lively-sentence");
-	$('.masthead').show(250);
+	// $('.masthead').show(250);
 	sentenceAnimation("#lively-sentence");
 }
 
@@ -43,7 +43,7 @@ function animateProgressBar (percent) {
 }
 function sentenceClick (section) {
 	myHide('.inner.cover:not(.my-hidden)');
-	$('.masthead').hide(250);
+	// $('.masthead').hide(250);
 	myShow("#lively-sentence-"+section);
 	sentenceAnimation("#lively-sentence-"+section);
 }
@@ -52,11 +52,11 @@ function prefSelect (thisElem, selector, lsKey) {
 	var val = $(thisElem).data("value")
 	if (localStorage.getItem(lsKey) != val){
 		localStorage.setItem(lsKey, val);
-		$(thisElem).animate({width: "140px", height: "140px"}, 100);
-		$(thisElem).children('span').animate({'line-height': '138px', 'font-size': '25px'}, 100);
+		$(thisElem).animate({width: "140px", height: "140px"}, 100, "easeOutBack");
+		$(thisElem).children('span').animate({'line-height': '138px', 'font-size': '25px'}, 100, "easeOutBack");
 		$(thisElem).addClass('pref-select-selected');
-		$(selector).not($(thisElem)).animate({width: "100px", height: "100px"}, 100);
-		$(selector).not($(thisElem)).children('span').animate({'font-size': '20px', 'line-height': '98px'}, 100);
+		$(selector).not($(thisElem)).animate({width: "100px", height: "100px"}, 100, "easeOutBack");
+		$(selector).not($(thisElem)).children('span').animate({'font-size': '20px', 'line-height': '98px'}, 100, "easeOutBack");
 		$(selector).not($(thisElem)).removeClass('pref-select-selected');
 	}
 }
@@ -64,6 +64,7 @@ function prefSelect (thisElem, selector, lsKey) {
 $(function(){
 	$('#clear-data').click(function(){
 		myHide('.inner.cover:not(.my-hidden)');
+		$(".navbar-toggle").click();
 		myShow("#lively-clear-data");
 	});
 
@@ -85,6 +86,9 @@ $(function(){
 	});
 
 	$("#get-started").click(function(){
+		$(".site-wrapper").css({'padding-top': '70px'});
+		myHide(".masthead");
+		myShow(".navbar.navbar-inverse.navbar-fixed-top");
 		if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
 			loadSentence();
 		} else {
@@ -171,4 +175,10 @@ $(function(){
 		myHide('.inner.cover:not(.my-hidden)');
 		loadSentence();
 	});
+
+	$("#search").click(function(){
+		// myHide(".masthead");
+		myHide('.inner.cover:not(.my-hidden)');
+		myShow('#event-page');
+	})
 });

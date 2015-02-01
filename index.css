@@ -2,6 +2,10 @@
 	outline: none !important;
 }
 
+.cover-container{
+	min-height: 525px;
+}
+
 .pref-select {
 	display: inline-block;
 	border-radius: 1000px;
@@ -80,4 +84,15 @@ small{
   .navbar-fixed-bottom{
     display: none;
   }
+}
+
+
+.panel, .panel.panel-default>.panel-heading {
+	border-color: transparent;
+	color: inherit;
+	background-color: transparent;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+	background-color: transparent;
 }
