@@ -1,0 +1,52 @@
+I'M
+	[location]
+& FEEL LIKE
+	[activity]
+WITH
+	[people]
+& WANNA GET BACK HOME
+	[time].
+
+
+
+[location]:
+	- CHILLING AT HOME
+	- FOCUSED AT WORK
+	- ON PUBLIC TRANSIT
+	- DRIVING AROUND
+	- AT A PARTY
+	- IN A CLUB
+	- SUPER BORED
+
+[activity]
+	- DOING ANYTHING  --> [] but popular
+	- PARTYING --> [103, 104, 106, 110, 116, 119, 199] && keyword = 'party', 'dance', 'jam', 'celebrate'.
+	- WILDING OUT AT A CONCERT --> [103]
+	- INDULGING MY TASTE BUDS --> [110]
+	- WINDING DOWN --> [119, 117, 115, 113, 110]
+	- WORKING OUT --> [108]
+	- HITTING THE OUTDOORS --> [109]
+	- HELPING THE WORLD --> [111]
+	- DOING SCIENCY STUFF --> [102]
+	- GETTING SPIRITUAL --> [114]
+	- ENJOYING ART --> [105]
+	- TAKING A CHANCE --> popular=NO.
+
+[people]
+	- SOME FUTURE FRIENDS
+	- A FEW CLOSE BUDDIES
+	- MY BETTER HALF
+
+[time] --> UTC date
+	- AT SIX IN THE MORNIN' --> [-24, +24]
+	- IN A COUPLE HOURS --> [-24, +4]
+	- AROUND EARLY EVENING --> [-24, 7pm that day]
+	- BY MIDNIGHT --> [-24, next day]
+	- NOT TOO LATE --> [-24, 10pm]
+
+
+
+
+__---___---___---___---___
+
+EB: token=WLDLTCSQNTYUFBSE32R2
