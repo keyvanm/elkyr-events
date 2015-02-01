@@ -50,3 +50,20 @@ WITH
 __---___---___---___---___
 
 EB: token=WLDLTCSQNTYUFBSE32R2
+
+
+
+
+[activity]
+	- DOING ANYTHING  --> []
+	- PARTYING --> [5, 21]
+	- WILDING OUT AT A CONCERT --> [21]
+	- INDULGING MY TASTE BUDS --> [10]
+	- WINDING DOWN --> [1, 4, 8, 11, 14, 17]
+	- WORKING OUT --> [9]
+	- HITTING THE OUTDOORS --> [9]
+	- HELPING THE WORLD --> [4]
+	- DOING SCIENCY STUFF --> [6]
+	- GETTING SPIRITUAL --> [22]
+	- ENJOYING ART --> [20,18,1]
+	- TAKING A CHANCE --> popular=NO.
