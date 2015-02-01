@@ -1,0 +1,83 @@
+* {
+	outline: none !important;
+}
+
+.pref-select {
+	display: inline-block;
+	border-radius: 1000px;
+	width: 100px;
+	height: 100px;
+	background-color: green;
+	text-align: center;
+}
+
+.pref-select.pref-select-selected {
+	width: 140px;
+	height: 140px;
+	background-color: green;
+}
+
+.pref-select > span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 98px;
+	font-size: 20px;
+}
+
+.pref-select.pref-select-selected > span {
+	line-height:138px;
+	font-size: 25px;
+}
+
+.pref-select.pref-select-selected.pref-select-ext-extrovert{
+	background-image: url("img/party.jpg");
+}
+.pref-select.pref-select-selected.pref-select-ext-introvert{
+	background-image: url("img/reading.jpg");
+}
+.pref-select.pref-select-selected.pref-select-doors-outdoors{
+	background-image: url("img/outdoors.jpg");
+}
+.pref-select.pref-select-selected.pref-select-doors-indoors{
+	background-image: url("img/indoors.jpg");
+}
+.pref-select.pref-select-selected.pref-select-dresscode-formal{
+	background-image: url("img/formal.jpg");
+}
+.pref-select.pref-select-selected.pref-select-dresscode-casual{
+	background-image: url("img/casual.jpg");
+}
+
+ul.list-unstyled {
+	text-align: left;
+}
+.sentence-header {
+	font-weight: bold;
+	color: gray;
+}
+.sentence-select{
+	margin: 5px 0;
+}
+.sentence-select>span {
+	overflow: hidden;
+	background-color: green;
+	padding: 2px 5px;
+	white-space: nowrap;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.my-hidden {
+  display: none;
+  visibility: hidden;
+}
+
+small{
+  font-size: 45%;
+}
+
+@media (max-height: 400px) {
+  .navbar-fixed-bottom{
+    display: none;
+  }
+}

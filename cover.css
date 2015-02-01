@@ -105,15 +105,6 @@ body {
   }
 }
 
-.my-hidden {
-  display: none;
-  visibility: hidden;
-}
-small{
-  font-size: 45%;
-}
-
-
 /*
  * Cover
  */
@@ -168,11 +159,5 @@ small{
   .mastfoot,
   .cover-container {
     width: 700px;
-  }
-}
-
-@media (max-height: 400px) {
-  .navbar-fixed-bottom{
-    display: none;
   }
 }
