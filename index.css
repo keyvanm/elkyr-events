@@ -2,6 +2,16 @@
 	outline: none !important;
 }
 
+@font-face{
+	font-family: biko;
+	src: url('biko/Biko_Bold.otf');
+}
+
+a.btn, #lively-sentence, .subsentence{
+	font-family: biko;
+	text-transform: uppercase;
+}
+
 .cover-container{
 	min-height: 525px;
 }
@@ -95,4 +105,21 @@ small{
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
 	background-color: transparent;
+}
+
+.text-orange{
+	color: #FF9F00;
+}
+
+.text-yellow {
+	color: #FFEA00;
+}
+
+.navbar-brand.text-yellow{
+	color: #FFEA00;
+}
+
+.navbar-brand, .masthead-brand{
+	font-family: biko;
+	/*font-weight: bold;*/
 }
