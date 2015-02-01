@@ -202,6 +202,9 @@ function muSuccess(data){
 
 function populatePage(){
 	var data = jsonResponse;
+	if (currentEventIndex >= data.results.length){
+		$("#find-events").click();
+	}
 	myHide('.inner.cover:not(.my-hidden)');
 	try {
 		var lat = data.results[currentEventIndex].venue.lat;
@@ -215,6 +218,7 @@ function populatePage(){
 
 	$("#event-name").text(data.results[currentEventIndex].name);
 	$("#event-desc").html(data.results[currentEventIndex].description);
+	$("#event-desc").find('a').text('link');
 	$("#event-url").attr("href", eventUrl);
 	$("#map").attr("src", mapSrc);
 
