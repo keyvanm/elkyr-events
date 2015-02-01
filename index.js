@@ -245,7 +245,7 @@ function formatMapUrl(lat, lon){
 
 
 function formatEbPopular() {
-    if ($("#dayyoos").data("skey") == 11){
+    if ($("#lively-sentence-feel-link").data("skey") == 11){
       return "popular=off&";
     }
     return "popular=on&";
@@ -253,7 +253,7 @@ function formatEbPopular() {
 
 function formatEbCategories() {
 
-  choice = $("#dayyoos").data("skey");
+  choice = $("#lively-sentence-feel-link").data("skey");
 
   if (choice == 1)
     return "q=party&categories=103%2C+104%2C+106%2C+110%2C+116%2C+119+%2C+199&";
@@ -281,7 +281,7 @@ function formatEbCategories() {
 
 function formatMuCategories() {
 
-  choice = $("#dayyoos").data("skey");
+  choice = $("#lively-sentence-feel-link").data("skey");
 
   if (choice == 1)
     return "category=5,21&";
