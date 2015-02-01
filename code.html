@@ -67,11 +67,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function(){
+
       if (!localStorage.pageLoadCount)
       localStorage.pageLoadCount = 0;
       localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount) + 1;
-     $("#dayyoos").text(localStorage.pageLoadCount);
+
+
+     $.ajax({
+      url: "https://www.eventbriteapi.com/v3/events/search/?q=concert&popular=on&location.address=toronto&location.within=100km&venue.city=toronto&categories=103&token=WLDLTCSQNTYUFBSE32R2",
+      success: show_response,
+      error: show_error,
+      jsonp: false,
+      jsonpCallback: false,
+      dataType: "json",
+      cache: true
+    })
+
+
+
      });
+
+    function show_response(data){
+        $("#dayyoos").text(data);
+    }
+
+    function show_error(){
+        alert("Oops! Please try again :-(")
+    }
+
+
     </script>
     
   </body>
