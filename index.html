@@ -38,7 +38,7 @@
 				vertical-align: middle;
 				line-height:98px
 			}
-			#lively-sentence {
+			ul.list-unstyled {
 				text-align: left;
 			}
 			.sentence-header {
@@ -143,38 +143,119 @@
 								<button id="find-events" class="btn btn-lg btn-default">Lets find events</button>
 							</div>
 						</div>
+
 						<div class="inner cover hidden" id="lively-sentence">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
-									<li class="sentence-header">
-										I'm
-									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-header">I'm</li>
+									<li id="lively-sentence-im-link" class="sentence-select fullwidth">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-header">
-										&amp; feel like
-									</li>
-									<li class="sentence-select fullwidth">
+
+									<li class="sentence-header">&amp; feel like</li>
+									<li id="lively-sentence-feel-link" class="sentence-select fullwidth">
 										<span>cooking</span>
 									</li>
-									<li class="sentence-header">
-										with
-									</li>
-									<li class="sentence-select fullwidth">
+
+									<li class="sentence-header">with</li>
+									<li id="lively-sentence-with-link" class="sentence-select fullwidth">
 										<span>my co-workers</span>
 									</li>
-									<li class="sentence-header">
-										to
-									</li>
-									<li class="sentence-select fullwidth">
+
+									<li class="sentence-header">&amp; wanna get back home</li>
+									<li id="lively-sentence-end-link" class="sentence-select fullwidth">
 										<span>oldies</span>
 									</li>
 								</ul>
 								<button class="btn btn-lg btn-default">Search</button>
 							</div>
 						</div>
+
+						<div class="inner cover hidden" id="lively-sentence-im">
+							<h2 class="cover-heading">The sentence</h2>
+							<div>
+								<ul class="list-unstyled">
+									<li class="sentence-header">I'm</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="inner cover hidden" id="lively-sentence-feel">
+							<h2 class="cover-heading">The sentence</h2>
+							<div>
+								<ul class="list-unstyled">
+									<li class="sentence-header">&amp; feel like</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="inner cover hidden" id="lively-sentence-with">
+							<h2 class="cover-heading">The sentence</h2>
+							<div>
+								<ul class="list-unstyled">
+									<li class="sentence-header">with</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="inner cover hidden" id="lively-sentence-end">
+							<h2 class="cover-heading">The sentence</h2>
+							<div>
+								<ul class="list-unstyled">
+									<li class="sentence-header">&amp; wanna get back home</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+									<li class="sentence-select fullwidth">
+										<span>at a BBQ</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
 					</div>
 
 					<div class="mastfoot hidden">
@@ -190,16 +271,20 @@
 		<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-		function loadSentence(prevId) {
-			$("#" + prevId).addClass("hidden");
-			$("#lively-sentence").removeClass("hidden");
-			$('#lively-sentence .sentence-select>span').each(function() {
+		function sentenceAnimation (selector) {
+			$(selector + " .sentence-select>span").each(function() {
 				$(this).data('width', $(this).width()+10);
 				$(this).css({width: "100%"});
 			});
-			$(".sentence-select>span").each(function(){
+			$(selector + " .sentence-select>span").each(function(){
 				$(this).animate({width:  $(this).data('width') + "px"}, 750, "easeInOutQuint");
 			});
+		}
+
+		function loadSentence(prevId) {
+			$('.inner.cover:not(.hidden)').addClass("hidden");
+			$("#lively-sentence").removeClass("hidden");
+			sentenceAnimation("#lively-sentence");
 		}
 
 		$(function(){
@@ -208,12 +293,12 @@
 				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
 			});
 			$('#clear-data').click(function(){
-				$(".inner.cover").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-clear-data").removeClass("hidden");
 			});
 
 			$('#take-home').click(function(){
-				$(".inner.cover").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-home").removeClass("hidden");
 			});
 
@@ -233,7 +318,7 @@
 				if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
 					loadSentence("lively-home");
 				} else {
-					$("#lively-home").addClass("hidden");
+					$('.inner.cover:not(.hidden)').addClass("hidden");
 					$("#lively-name").removeClass("hidden");
 					$("#user-name-input").focus();
 				}
@@ -242,39 +327,62 @@
 			$("#name-in").click(function(){
 				localStorage.user_name = $("#user-name-input").val();
 				$("#user-name").text($("#user-name-input").val());
-				$("#lively-name").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-age").removeClass("hidden");
 				$("#user-age-input").focus();
 			});
 
 			$("#age-in").click(function(){
 				localStorage.user_age = $("#user-age-input").val();
-				$("#lively-age").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-extraversion").removeClass("hidden");
 			});
 
 			$(".pref-select-ext").click(function(){
 				localStorage.user_ext = $(this).data("value");
-				$("#lively-extraversion").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-doors").removeClass("hidden");
 			});
 
 			$(".pref-select-doors").click(function(){
 				localStorage.user_doors = $(this).data("value");
-				$("#lively-doors").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-dresscode").removeClass("hidden");
 			});
 
 			$(".pref-select-dresscode").click(function(){
 				localStorage.user_dresscode = $(this).data("value");
-				$("#lively-dresscode").addClass("hidden");
+				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-ready").removeClass("hidden");
 			});
 
 			$("#find-events").click(function(){
 				loadSentence("lively-ready");
-			})
+			});
 
+			$("#lively-sentence-im-link").click(function(){
+				$('.inner.cover:not(.hidden)').addClass("hidden");
+				$("#lively-sentence-im").removeClass("hidden");
+				sentenceAnimation("#lively-sentence-im");
+			});
+
+			$("#lively-sentence-feel-link").click(function(){
+				$('.inner.cover:not(.hidden)').addClass("hidden");
+				$("#lively-sentence-feel").removeClass("hidden");
+				sentenceAnimation("#lively-sentence-feel");
+			});
+
+			$("#lively-sentence-with-link").click(function(){
+				$('.inner.cover:not(.hidden)').addClass("hidden");
+				$("#lively-sentence-with").removeClass("hidden");
+				sentenceAnimation("#lively-sentence-with");
+			});
+
+			$("#lively-sentence-end-link").click(function(){
+				$('.inner.cover:not(.hidden)').addClass("hidden");
+				$("#lively-sentence-end").removeClass("hidden");
+				sentenceAnimation("#lively-sentence-end");
+			});
 		});
 		</script>
 	</body>
