@@ -2,18 +2,30 @@
 	outline: none !important;
 }
 
+body{
+	background-image: url("img/j.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+nav.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
 @font-face{
 	font-family: biko;
 	src: url('biko/Biko_Bold.otf');
 }
 
-a.btn, #lively-sentence, .subsentence{
+button.btn, a.btn, #lively-sentence, .subsentence{
 	font-family: biko;
 	text-transform: uppercase;
 }
 
 .cover-container{
-	min-height: 525px;
+	/*min-height: 500px;*/
 }
 
 .pref-select {
@@ -25,10 +37,33 @@ a.btn, #lively-sentence, .subsentence{
 	text-align: center;
 }
 
+.tinder-btn {
+	display: inline-block;
+	border-radius: 1000px;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.tinder-btn-yea{
+	background-color: green;
+}
+
+.tinder-btn-no{
+	background-color: red;
+}
+
+.tinder-btn > span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 78px;
+	font-size: 20px;
+}
+
 .pref-select.pref-select-selected {
 	width: 140px;
 	height: 140px;
-	background-color: green;
+	/*background-color: green;*/
 }
 
 .pref-select > span {
@@ -74,8 +109,7 @@ ul.list-unstyled {
 }
 .sentence-select>span {
 	overflow: hidden;
-	background-color: green;
-	padding: 2px 5px;
+	padding: 5px 5px 2px;
 	white-space: nowrap;
 	display: inline-block;
 	cursor: pointer;
@@ -119,7 +153,66 @@ small{
 	color: #FFEA00;
 }
 
-.navbar-brand, .masthead-brand{
+.navbar-brand, .masthead-brand, #event-name, #event-page .panel-title{
 	font-family: biko;
 	/*font-weight: bold;*/
 }
+.masthead-brand{
+	font-size: 75px;
+}
+
+#event-name{
+	margin-top: 0;
+}
+
+.map-panel{
+	margin-bottom: 0;
+}
+
+#event-desc {
+	height: 180px;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+#event-desc img {
+	max-width: 80%;
+}
+
+#event-page{
+	font-size: 85%;
+}
+
+#lively-sentence-im-link>span, #lively-sentence-im li.sentence-select>span{
+	background-color: #FFEA00;
+}
+#lively-sentence-feel-link>span, #lively-sentence-feel li.sentence-select>span{
+	background-color: #FF9F00;
+}
+#lively-sentence-with-link>span, #lively-sentence-with li.sentence-select>span{
+	background-color: #FF6500;
+}
+#lively-sentence-end-link>span, #lively-sentence-end li.sentence-select>span{
+	background-color: #FF2C00;
+}
+
+.footer .progress .progress-bar {
+	background-color: #FF2C00;
+}
+
+
+.pref-select-ext-extrovert, .pref-select-doors-indoors, .pref-select-dresscode-formal, .tinder-btn-no{
+	background-color: #FF9F00;
+	font-family: biko;
+}
+
+.pref-select-ext-introvert, .pref-select-doors-outdoors, .pref-select-dresscode-casual, .tinder-btn-yea{
+	background-color: #FF6500;
+	font-family: biko;
+}
+
+.cover-heading {
+	font-family: biko;
+}
+
+

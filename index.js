@@ -79,6 +79,7 @@ $(function(){
 
 	$("#get-started").click(function(){
 		$(".site-wrapper").css({'padding-top': '70px'});
+		$(document.body).css({"background-image": "none"});
 		myHide(".masthead");
 		myShow(".navbar.navbar-inverse.navbar-fixed-top");
 		if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
@@ -239,7 +240,7 @@ function sendEbRequest(){
 }
 
 function formatMapUrl(lat, lon){
-	return "https://maps.googleapis.com/maps/api/staticmap?size=342x242&markers=color:red%7C" + lat + "," + lon;
+	return "https://maps.googleapis.com/maps/api/staticmap?size=342x180&markers=color:red%7C" + lat + "," + lon;
 }
 
 

@@ -55,7 +55,7 @@
 					</nav>
 					
 					<div id="master-frame">
-						<div class="inner cover" id="lively-home">
+						<div class="inner cover" id="lively-home" style="margin-top: 100px;">
 							<p class="lead">lively is an event suggesting buddy that works around your mood</p>
 							<div class="lead">
 								<a href="#" id="get-started" class="btn btn-lg btn-default">Get Started!</a>
@@ -127,7 +127,7 @@
 						<div class="inner cover my-hidden" id="lively-ready">
 							<h2 class="cover-heading">You're ready to go!</h2>
 							<div>
-								<button id="find-events" class="btn btn-lg btn-default">Lets find events</button>
+								<button id="find-events" class="btn btn-lg btn-default">Lets find you events</button>
 							</div>
 						</div>
 
@@ -281,34 +281,27 @@
 
 						<div class="inner cover my-hidden" id="event-page">
 							<h2 class="cover-heading" id="event-name">Event Name</h2>
-							<div class="panel panel-default">
-								<img id="map" src="https://maps.googleapis.com/maps/api/staticmap?size=342x242&markers=color:red%7C43.652,-79.381">
+							<div class="panel panel-default map-panel">
+								<img id="map" src="https://maps.googleapis.com/maps/api/staticmap?size=342x180&markers=color:red%7C43.652,-79.381">
 							</div>
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h2 class="panel-title">Description</h2>
-								</div>
   								<div class="panel-body" id="event-desc"></div>
-  								<div class="form-group row">
-									<div class="col-xs-6"><a id="next-event" class="pref-select pull-right" href="#"><span>Nah :/</span></a></div>
-									<div class="col-xs-6"><a id="event-url" target="_blank" class="pref-select pull-left" href="#"><span>Yea!</span></a></div>
-								</div>
 							</div>
-							<div></div>
+							<div class="form-group row">
+								<div class="col-xs-6"><a id="next-event" class="tinder-btn tinder-btn-no pull-right" href="#"><span>Nah :/</span></a></div>
+								<div class="col-xs-6"><a id="event-url" target="_blank" class="tinder-btn tinder-btn-yea pull-left" href="#"><span>Yea!</span></a></div>
+							</div>
 						</div>
 						
 					</div>
 				</div>
-				<nav class="">
-						<div class="container">
-							<div class="progress my-hidden">
-								<div class="progress-bar" style="width: 0%; text-align: center;"></div>
-							</div>
-							<div class="mastfoot">
-								<small>2015 Elkyr inc.</small>
-							</div>
+				<nav class="footer">
+					<div class="container">
+						<div class="progress my-hidden">
+							<div class="progress-bar" style="width: 0%; text-align: center;"></div>
 						</div>
-					</nav>
+					</div>
+				</nav>
 			</div>
 		</div>
 	
