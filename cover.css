@@ -109,6 +109,9 @@ body {
   display: none;
   visibility: hidden;
 }
+small{
+  font-size: 45%;
+}
 
 
 /*

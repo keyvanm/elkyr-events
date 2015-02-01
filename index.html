@@ -84,14 +84,14 @@
 							</p>
 						</div>
 
-						<div class="inner cover hidden" id="lively-clear-data">
+						<div class="inner cover my-hidden" id="lively-clear-data">
 							<h2 class="cover-heading">Are you sure you want to clear data</h2>
 							<div class="form-group">
 								<button onclick="localStorage.clear(); $('#take-home').click();" class="btn btn-lg btn-default">Yes!</button>
 							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-name">
+						<div class="inner cover my-hidden" id="lively-name">
 							<h2 class="cover-heading">What's up?</h2>
 
 							<div class="form-group">
@@ -102,7 +102,7 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-age">
+						<div class="inner cover my-hidden" id="lively-age">
 							<h2 class="cover-heading">Hi <span id="user-name"></span>! Let's get to know each other</h2>
 
 							<div class="form-group">
@@ -113,38 +113,47 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-extraversion">
+						<div class="inner cover my-hidden" id="lively-extraversion">
 							<h2 class="cover-heading">Which of these two sounds more fun?</h2>
-							<div>
+							<div class="form-group">
 								<a class="pref-select pref-select-ext" data-value="extrovert" href="#"><span>Partying</span></a>
 								<a class="pref-select pref-select-ext" data-value="introvert" href="#"><span>Reading</span></a>
 							</div>
+							<div class="form-group">
+								<a href="#" id="ext-in" class="btn btn-lg btn-default">Next</a>
+							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-doors">
+						<div class="inner cover my-hidden" id="lively-doors">
 							<h2 class="cover-heading">Where would you rather be?</h2>
-							<div>
+							<div class="form-group">
 								<a class="pref-select pref-select-doors" data-value="indoors" href="#"><span>Indoors</span></a>
 								<a class="pref-select pref-select-doors" data-value="outdoors" href="#"><span>Outdoors</span></a>
 							</div>
-						</div>
-
-						<div class="inner cover hidden" id="lively-dresscode">
-							<h2 class="cover-heading">Suit up or casual?</h2>
-							<div>
-								<a class="pref-select pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a>
-								<a class="pref-select pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a>
+							<div class="form-group">
+								<a href="#" id="doors-in" class="btn btn-lg btn-default">Next</a>
 							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-ready">
+						<div class="inner cover my-hidden" id="lively-dresscode">
+							<h2 class="cover-heading">Suit up or casual?</h2>
+							<div class="form-group">
+								<a class="pref-select pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a>
+								<a class="pref-select pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a>
+							</div>
+							<div class="form-group">
+								<a href="#" id="dresscode-in" class="btn btn-lg btn-default">Next</a>
+							</div>
+						</div>
+
+						<div class="inner cover my-hidden" id="lively-ready">
 							<h2 class="cover-heading">You're ready to go!</h2>
 							<div>
 								<button id="find-events" class="btn btn-lg btn-default">Lets find events</button>
 							</div>
 						</div>
 
-						<div class="inner cover hidden" id="lively-sentence">
+						<div class="inner cover my-hidden" id="lively-sentence">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
@@ -172,7 +181,7 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden subsentence" id="lively-sentence-im">
+						<div class="inner cover my-hidden subsentence" id="lively-sentence-im">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
@@ -202,7 +211,7 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden subsentence" id="lively-sentence-feel">
+						<div class="inner cover my-hidden subsentence" id="lively-sentence-feel">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
@@ -247,7 +256,7 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden subsentence" id="lively-sentence-with">
+						<div class="inner cover my-hidden subsentence" id="lively-sentence-with">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
@@ -268,7 +277,7 @@
 							</div>
 						</div>
 
-						<div class="inner cover hidden subsentence" id="lively-sentence-end">
+						<div class="inner cover my-hidden subsentence" id="lively-sentence-end">
 							<h2 class="cover-heading">The sentence</h2>
 							<div>
 								<ul class="list-unstyled">
@@ -295,13 +304,11 @@
 					</div>
 					<nav class="navbar-fixed-bottom">
 						<div class="container">
-							<div class="progress hidden">
+							<div class="progress my-hidden">
 								<div class="progress-bar" style="width: 0%; text-align: center;"></div>
 							</div>
-							<div class="mastfoot hidden">
-								<div class="inner">
-									<p>2015 Elkyr inc.</p>
-								</div>
+							<div class="mastfoot">
+								<small>2015 Elkyr inc.</small>
 							</div>
 						</div>
 					</nav>
@@ -313,6 +320,14 @@
 		<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
+		jQuery.fn.visible = function() {
+			return this.css('visibility', 'visible');
+		};
+
+		jQuery.fn.invisible = function() {
+			return this.css('visibility', 'hidden');
+		};
+
 		function sentenceAnimation (selector) {
 			$(selector + " .sentence-select>span").each(function() {
 				$(this).data('width', $(this).css("width"));
@@ -325,9 +340,22 @@
 			});
 		}
 
+		function myHide (selector) {
+			$(selector).hide(250, function(){
+				$(selector).addClass("my-hidden");
+			})
+		}
+
+		function myShow (selector) {
+			$(selector).show(250, function(){
+				$(selector).removeClass("my-hidden");
+				$(selector).find('input').focus();
+			})
+		}
+
 		function loadSentence() {
-			$('.inner.cover:not(.hidden)').addClass("hidden");
-			$("#lively-sentence").removeClass("hidden");
+			myHide('.inner.cover:not(.my-hidden)');
+			myShow("#lively-sentence");
 			$('.masthead').show(250);
 			sentenceAnimation("#lively-sentence");
 		}
@@ -336,25 +364,30 @@
 			$(".progress > .progress-bar").animate({'width': percent+"%"}, 250, "easeOutQuint");
 		}
 		function sentenceClick (section) {
-			$('.inner.cover:not(.hidden)').addClass("hidden");
+			myHide('.inner.cover:not(.my-hidden)');
 			$('.masthead').hide(250);
-			$("#lively-sentence-"+section).removeClass("hidden");
+			myShow("#lively-sentence-"+section);
 			sentenceAnimation("#lively-sentence-"+section);
 		}
 
-		$(function(){
-			$(".pref-select").click(function(){
-				$(this).animate({width: "+=20", height: "+=20"}, 100);
-				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+		function prefSelect (thisElem, selector, lsKey) {
+			localStorage.setItem(lsKey, $(thisElem).data("value"));
+			$(selector).not($(thisElem)).invisible();
+			$(thisElem).animate({width: "+=20", height: "+=20"}, 100, function(){
+				$(selector).not($(thisElem)).visible();
 			});
+			$(thisElem).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+		}
+
+		$(function(){
 			$('#clear-data').click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-clear-data").removeClass("hidden");
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-clear-data");
 			});
 
 			$('#take-home').click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-home").removeClass("hidden");
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-home");
 			});
 
 			$('#user-name-input').bind('keypress', function(e) {
@@ -373,53 +406,77 @@
 				if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
 					loadSentence();
 				} else {
-					$('.inner.cover:not(.hidden)').addClass("hidden");
-					$("#lively-name").removeClass("hidden");
-					$(".progress").removeClass("hidden");
+					myHide('.inner.cover:not(.my-hidden)');
+					myShow("#lively-name");
+					myShow(".progress");
 					animateProgressBar(0);
-					$("#user-name-input").focus();
+					// $("#user-name-input").focus();
 				}
 			});
 
 			$("#name-in").click(function(){
 				localStorage.user_name = $("#user-name-input").val();
 				$("#user-name").text($("#user-name-input").val());
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-age").removeClass("hidden");
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-age");
 				animateProgressBar(20);
-				$("#user-age-input").focus();
+				// $("#user-age-input").focus();
 			});
 
 			$("#age-in").click(function(){
 				localStorage.user_age = $("#user-age-input").val();
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-extraversion").removeClass("hidden");
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-extraversion");
 				animateProgressBar(40);
 			});
 
 			$(".pref-select-ext").click(function(){
 				localStorage.user_ext = $(this).data("value");
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-doors").removeClass("hidden");
+				$(".pref-select-ext").not($(this)).invisible();
+				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
+					$(".pref-select-ext").not($(this)).visible();
+				});
+				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+			});
+
+			$("#ext-in").click(function(){
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-doors");
 				animateProgressBar(60);
 			});
 
 			$(".pref-select-doors").click(function(){
 				localStorage.user_doors = $(this).data("value");
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-dresscode").removeClass("hidden");
+				$(".pref-select-doors").not($(this)).invisible();
+				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
+					$(".pref-select-doors").not($(this)).visible();
+				});
+				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+			});
+
+			$("#doors-in").click(function(){
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-dresscode");
 				animateProgressBar(80);
 			});
 
 			$(".pref-select-dresscode").click(function(){
 				localStorage.user_dresscode = $(this).data("value");
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-ready").removeClass("hidden");
+				$(".pref-select-dresscode").not($(this)).invisible();
+				$(this).animate({width: "+=20", height: "+=20"}, 100, function(){
+					$(".pref-select-dresscode").not($(this)).visible();
+				});
+				$(this).children('span').animate({'line-height': '+=20', 'font-size': '+=5'}, 100);
+			});
+
+			$("#dresscode-in").click(function(){
+				myHide('.inner.cover:not(.my-hidden)');
+				myShow("#lively-ready");
 				animateProgressBar(100);
 			});
 
 			$("#find-events").click(function(){
-				$(".progress").addClass("hidden");
+				myHide(".progress");
 				loadSentence();
 			});
 
@@ -443,7 +500,7 @@
 				var thisElem = this;
 				var parentId = $(thisElem).closest(".inner.cover").attr("id");
 				$("#"+parentId+"-link").children("span").text($(thisElem).text());
-				$('.inner.cover:not(.hidden)').addClass("hidden");
+				myHide('.inner.cover:not(.my-hidden)');
 				loadSentence();
 			});
 
