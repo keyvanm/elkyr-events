@@ -31,13 +31,46 @@
 				width: 100px;
 				height: 100px;
 				background-color: green;
-   				text-align: center;
+				text-align: center;
 			}
+
+			.pref-select.pref-select-selected {
+				width: 140px;
+				height: 140px;
+				background-color: green;
+			}
+
 			.pref-select > span {
 				display: inline-block;
 				vertical-align: middle;
-				line-height:98px
+				line-height: 98px;
+				font-size: 20px;
 			}
+
+			.pref-select.pref-select-selected > span {
+				line-height:138px;
+				font-size: 25px;
+			}
+			
+			.pref-select.pref-select-selected.pref-select-ext-extrovert{
+				background-image: url("party.jpg");
+			}
+			.pref-select.pref-select-selected.pref-select-ext-introvert{
+				background-image: url("reading.jpg");
+			}
+			.pref-select.pref-select-selected.pref-select-doors-outdoors{
+				background-image: url("outdoors.jpg");
+			}
+			.pref-select.pref-select-selected.pref-select-doors-indoors{
+				background-image: url("indoors.jpg");
+			}
+			.pref-select.pref-select-selected.pref-select-dresscode-formal{
+				background-image: url("formal.jpg");
+			}
+			.pref-select.pref-select-selected.pref-select-dresscode-casual{
+				background-image: url("casual.jpg");
+			}
+
 			ul.list-unstyled {
 				text-align: left;
 			}
@@ -54,6 +87,7 @@
 				padding: 2px 5px;
 				white-space: nowrap;
 				display: inline-block;
+				cursor: pointer;
 			}
 		</style>
 	</head>
@@ -116,8 +150,8 @@
 						<div class="inner cover my-hidden" id="lively-extraversion">
 							<h2 class="cover-heading">Which of these two sounds more fun?</h2>
 							<div class="form-group row">
-								<div class="col-xs-6"><a class="pref-select pull-right pref-select-ext" data-value="extrovert" href="#"><span>Partying</span></a></div>
-								<div class="col-xs-6"><a class="pref-select pull-left pref-select-ext" data-value="introvert" href="#"><span>Reading</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-ext pref-select-ext-extrovert" data-value="extrovert" href="#"><span>Partying</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-ext pref-select-ext-introvert" data-value="introvert" href="#"><span>Reading</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="ext-in" class="btn btn-lg btn-default">Next</a>
@@ -127,8 +161,8 @@
 						<div class="inner cover my-hidden" id="lively-doors">
 							<h2 class="cover-heading">Where would you rather be?</h2>
 							<div class="form-group row">
-								<div class="col-xs-6"><a class="pref-select pull-right pref-select-doors" data-value="indoors" href="#"><span>Indoors</span></a></div>
-								<div class="col-xs-6"><a class="pref-select pull-left pref-select-doors" data-value="outdoors" href="#"><span>Outdoors</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-doors pref-select-doors-indoors" data-value="indoors" href="#"><span>Indoors</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-doors pref-select-doors-outdoors" data-value="outdoors" href="#"><span>Outdoors</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="doors-in" class="btn btn-lg btn-default">Next</a>
@@ -138,8 +172,8 @@
 						<div class="inner cover my-hidden" id="lively-dresscode">
 							<h2 class="cover-heading">Suit up or casual?</h2>
 							<div class="form-group row">
-								<div class="col-xs-6"><a class="pref-select pull-right pref-select-dresscode" data-value="formal" href="#"><span>Formal</span></a></div>
-								<div class="col-xs-6"><a class="pref-select pull-left pref-select-dresscode" data-value="casual" href="#"><span>Casual</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-right pref-select-dresscode pref-select-dresscode-formal" data-value="formal" href="#"><span>Formal</span></a></div>
+								<div class="col-xs-6"><a class="pref-select pull-left pref-select-dresscode pref-select-dresscode-casual" data-value="casual" href="#"><span>Casual</span></a></div>
 							</div>
 							<div class="form-group">
 								<a href="#" id="dresscode-in" class="btn btn-lg btn-default">Next</a>
@@ -375,9 +409,11 @@
 			if (localStorage.getItem(lsKey) != val){
 				localStorage.setItem(lsKey, val);
 				$(thisElem).animate({width: "140px", height: "140px"}, 100);
-				$(thisElem).children('span').animate({'line-height': '140px', 'font-size': '25px'}, 100);
+				$(thisElem).children('span').animate({'line-height': '138px', 'font-size': '25px'}, 100);
+				$(thisElem).addClass('pref-select-selected');
 				$(selector).not($(thisElem)).animate({width: "100px", height: "100px"}, 100);
 				$(selector).not($(thisElem)).children('span').animate({'font-size': '20px', 'line-height': '98px'}, 100);
+				$(selector).not($(thisElem)).removeClass('pref-select-selected');
 			}
 		}
 
