@@ -170,3 +170,9 @@ small{
     width: 700px;
   }
 }
+
+@media (max-height: 400px) {
+  .navbar-fixed-bottom{
+    display: none;
+  }
+}
