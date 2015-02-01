@@ -8,6 +8,10 @@ body{
 	background-size: cover;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 nav.footer{
 	position: absolute;
 	bottom: 0;
