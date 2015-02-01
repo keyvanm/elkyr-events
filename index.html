@@ -149,22 +149,22 @@
 							<div>
 								<ul class="list-unstyled">
 									<li class="sentence-header">I'm</li>
-									<li id="lively-sentence-im-link" class="sentence-select fullwidth">
+									<li id="lively-sentence-im-link" class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
 
 									<li class="sentence-header">&amp; feel like</li>
-									<li id="lively-sentence-feel-link" class="sentence-select fullwidth">
+									<li id="lively-sentence-feel-link" class="sentence-select">
 										<span>cooking</span>
 									</li>
 
 									<li class="sentence-header">with</li>
-									<li id="lively-sentence-with-link" class="sentence-select fullwidth">
+									<li id="lively-sentence-with-link" class="sentence-select">
 										<span>my co-workers</span>
 									</li>
 
 									<li class="sentence-header">&amp; wanna get back home</li>
-									<li id="lively-sentence-end-link" class="sentence-select fullwidth">
+									<li id="lively-sentence-end-link" class="sentence-select">
 										<span>oldies</span>
 									</li>
 								</ul>
@@ -177,17 +177,26 @@
 							<div>
 								<ul class="list-unstyled">
 									<li class="sentence-header">I'm</li>
-									<li class="sentence-select fullwidth">
-										<span>at a BBQ</span>
+									<li class="sentence-select">
+										<span>chilling at home</span>
 									</li>
-									<li class="sentence-select fullwidth">
-										<span>at a BBQ</span>
+									<li class="sentence-select">
+										<span>focused at work</span>
 									</li>
-									<li class="sentence-select fullwidth">
-										<span>at a BBQ</span>
+									<li class="sentence-select">
+										<span>on public transit</span>
 									</li>
-									<li class="sentence-select fullwidth">
-										<span>at a BBQ</span>
+									<li class="sentence-select">
+										<span>driving around</span>
+									</li>
+									<li class="sentence-select">
+										<span>at a party</span>
+									</li>
+									<li class="sentence-select">
+										<span>in da club</span>
+									</li>
+									<li class="sentence-select">
+										<span>super bored</span>
 									</li>
 								</ul>
 							</div>
@@ -198,16 +207,16 @@
 							<div>
 								<ul class="list-unstyled">
 									<li class="sentence-header">&amp; feel like</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
 								</ul>
@@ -219,16 +228,16 @@
 							<div>
 								<ul class="list-unstyled">
 									<li class="sentence-header">with</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
 								</ul>
@@ -240,16 +249,16 @@
 							<div>
 								<ul class="list-unstyled">
 									<li class="sentence-header">&amp; wanna get back home</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
-									<li class="sentence-select fullwidth">
+									<li class="sentence-select">
 										<span>at a BBQ</span>
 									</li>
 								</ul>
@@ -257,12 +266,18 @@
 						</div>
 						
 					</div>
-
-					<div class="mastfoot hidden">
-						<div class="inner">
-							<p>2015 Elkyr inc.</p>
+					<nav class="navbar-fixed-bottom">
+						<div class="container">
+							<div class="progress hidden">
+								<div class="progress-bar" style="width: 0%; text-align: center;"></div>
+							</div>
+							<div class="mastfoot hidden">
+								<div class="inner">
+									<p>2015 Elkyr inc.</p>
+								</div>
+							</div>
 						</div>
-					</div>
+					</nav>
 				</div>
 			</div>
 		</div>
@@ -281,10 +296,19 @@
 			});
 		}
 
-		function loadSentence(prevId) {
+		function loadSentence() {
 			$('.inner.cover:not(.hidden)').addClass("hidden");
 			$("#lively-sentence").removeClass("hidden");
 			sentenceAnimation("#lively-sentence");
+		}
+
+		function animateProgressBar (percent) {
+			$(".progress > .progress-bar").animate({'width': percent+"%"}, 250, "easeOutQuint");
+		}
+		function sentenceClick (section) {
+			$('.inner.cover:not(.hidden)').addClass("hidden");
+			$("#lively-sentence-"+section).removeClass("hidden");
+			sentenceAnimation("#lively-sentence-"+section);
 		}
 
 		$(function(){
@@ -316,10 +340,12 @@
 
 			$("#get-started").click(function(){
 				if (localStorage.user_name && localStorage.user_age && localStorage.user_ext && localStorage.user_doors && localStorage.user_dresscode) {
-					loadSentence("lively-home");
+					loadSentence();
 				} else {
 					$('.inner.cover:not(.hidden)').addClass("hidden");
 					$("#lively-name").removeClass("hidden");
+					$(".progress").removeClass("hidden");
+					animateProgressBar(0);
 					$("#user-name-input").focus();
 				}
 			});
@@ -329,6 +355,7 @@
 				$("#user-name").text($("#user-name-input").val());
 				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-age").removeClass("hidden");
+				animateProgressBar(20);
 				$("#user-age-input").focus();
 			});
 
@@ -336,53 +363,52 @@
 				localStorage.user_age = $("#user-age-input").val();
 				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-extraversion").removeClass("hidden");
+				animateProgressBar(40);
 			});
 
 			$(".pref-select-ext").click(function(){
 				localStorage.user_ext = $(this).data("value");
 				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-doors").removeClass("hidden");
+				animateProgressBar(60);
 			});
 
 			$(".pref-select-doors").click(function(){
 				localStorage.user_doors = $(this).data("value");
 				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-dresscode").removeClass("hidden");
+				animateProgressBar(80);
 			});
 
 			$(".pref-select-dresscode").click(function(){
 				localStorage.user_dresscode = $(this).data("value");
 				$('.inner.cover:not(.hidden)').addClass("hidden");
 				$("#lively-ready").removeClass("hidden");
+				animateProgressBar(100);
 			});
 
 			$("#find-events").click(function(){
-				loadSentence("lively-ready");
+				$(".progress").addClass("hidden");
+				loadSentence();
 			});
 
 			$("#lively-sentence-im-link").click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-sentence-im").removeClass("hidden");
-				sentenceAnimation("#lively-sentence-im");
+				sentenceClick("im");
 			});
 
 			$("#lively-sentence-feel-link").click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-sentence-feel").removeClass("hidden");
-				sentenceAnimation("#lively-sentence-feel");
+				sentenceClick("feel");
 			});
 
 			$("#lively-sentence-with-link").click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-sentence-with").removeClass("hidden");
-				sentenceAnimation("#lively-sentence-with");
+				sentenceClick("with")
 			});
 
 			$("#lively-sentence-end-link").click(function(){
-				$('.inner.cover:not(.hidden)').addClass("hidden");
-				$("#lively-sentence-end").removeClass("hidden");
-				sentenceAnimation("#lively-sentence-end");
+				sentenceClick("end")
 			});
+
+
 		});
 		</script>
 	</body>
