@@ -171,6 +171,7 @@ $(function(){
 	$(".subsentence li.sentence-select").click(function(){
 		var thisElem = this;
 		var parentId = $(thisElem).closest(".inner.cover").attr("id");
+		$("#"+parentId+"-link").data("skey", $(thisElem).data("skey"));
 		$("#"+parentId+"-link").children("span").text($(thisElem).text());
 		myHide('.inner.cover:not(.my-hidden)');
 		loadSentence();
