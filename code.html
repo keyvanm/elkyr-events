@@ -85,70 +85,14 @@
     <script>
       $(document).ready(function(){
 
-      function initialize() {
-        var myLatlng = new google.maps.LatLng(43.652,-79.381);
-        var mapOptions = {
-          disableDefaultUI: true,
-          zoom: 12,
-          center: myLatlng
-        }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(43.652,-79.381),
-            map: map,
-            title: 'Hello World!'
-        });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-
-      eb_url_string = "https://www.eventbriteapi.com/v3/events/search/?token=WLDLTCSQNTYUFBSE32R2&location.address=toronto&location.within=100km&";
-      eb_popular = formatEbPopular();
-      eb_categories = formatEbCategories();
-      eb_url_string = eb_url_string + eb_popular + eb_categories;
-
-      $.ajax({
-        url: eb_url_string,
-        success: ebDisplay,
-        error: showError,
-        jsonp: false,
-        jsonpCallback: false,
-        dataType: "json",
-        cache: true
-      })
-
-
-      mu_url_string = "https://api.meetup.com/2/open_events?&sign=true&photo-host=public&state=ON&lon=-79.36000061035156&city=560735&lat=43.7400016784668&country=ca&key=33594d52533a314944433d6d22685d4a&radius=smart&page=20&";
-      mu_categories = formatMuCategories();
-      mu_url_string = mu_url_string + mu_categories;
-
-      $.ajax({
-        url: mu_url_string,
-        success: muDisplay,
-        error: showError,
-        dataType: "jsonp"
-      })
 
 
 
      });
 
-    function ebDisplay(data){
-        $("#dayyoos").text(data.events[0].name.text);
-    }
-
-    function muDisplay(data){
-        $("#dayyoos").text(data.results[0].name);
-    }
-
-
-    function showError(){
-        alert("Oops! Please try again :-(")
-    }
-
     function formatEbPopular() {
-        if (true){
-          return "popular=on&";
+        if ($("#dayyoos").data("skey") == 11){
+          return "popular=off&";
         }
         return "popular=on&";
     }

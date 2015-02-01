@@ -1,11 +1,3 @@
-jQuery.fn.visible = function() {
-	return this.css('visibility', 'visible');
-};
-
-jQuery.fn.invisible = function() {
-	return this.css('visibility', 'hidden');
-};
-
 function sentenceAnimation (selector) {
 	$(selector + " .sentence-select>span").each(function() {
 		$(this).data('width', $(this).css("width"));
@@ -168,6 +160,10 @@ $(function(){
 		sentenceClick("end")
 	});
 
+	$("#next-event").click(function(){
+		populatePage();
+	});
+
 	$(".subsentence li.sentence-select").click(function(){
 		var thisElem = this;
 		var parentId = $(thisElem).closest(".inner.cover").attr("id");
@@ -178,8 +174,137 @@ $(function(){
 	});
 
 	$("#search").click(function(){
-		// myHide(".masthead");
-		myHide('.inner.cover:not(.my-hidden)');
-		myShow('#event-page');
-	})
+		var mu_url_string = "https://api.meetup.com/2/open_events?&sign=true&photo-host=public&state=ON&lon=-79.36000061035156&city=560735&lat=43.7400016784668&country=ca&key=33594d52533a314944433d6d22685d4a&radius=smart&page=20&";
+		mu_url_string += formatMuCategories();
+
+		$.ajax({
+			url: mu_url_string,
+			success: muSuccess,
+			error: showError,
+			dataType: "jsonp"
+		});
+
+	});
 });
+
+var currentEventIndex = 0;
+var jsonResponse;
+
+function muSuccess(data){
+	if (data.results.length == 0){
+		sendEbRequest();
+	}
+	jsonResponse = data;
+
+	populatePage();
+}
+
+function populatePage(){
+	var data = jsonResponse;
+	myHide('.inner.cover:not(.my-hidden)');
+	try {
+		var lat = data.results[currentEventIndex].venue.lat;
+		var lon = data.results[currentEventIndex].venue.lon;
+	} catch(e){
+		var lat = 43.652;
+		var lon = -79.381;
+	}
+	var eventUrl = data.results[currentEventIndex].event_url;
+	var mapSrc = formatMapUrl(lat, lon);
+
+	$("#event-name").text(data.results[currentEventIndex].name);
+	$("#event-desc").html(data.results[currentEventIndex].description);
+	$("#event-url").attr("href", eventUrl);
+	$("#map").attr("src", mapSrc);
+
+	currentEventIndex++;
+
+	myShow('#event-page');
+
+}
+
+function sendEbRequest(){
+	var eb_url_string = "https://www.eventbriteapi.com/v3/events/search/?token=WLDLTCSQNTYUFBSE32R2&location.address=toronto&location.within=100km&";
+	eb_url_string += formatEbPopular() + formatEbCategories();
+
+	$.ajax({
+		url: eb_url_string,
+		success: ebSuccess,
+		error: showError,
+		jsonp: false,
+		jsonpCallback: false,
+		dataType: "json",
+		cache: true
+	});
+}
+
+function formatMapUrl(lat, lon){
+	return "https://maps.googleapis.com/maps/api/staticmap?size=342x242&markers=color:red%7C" + lat + "," + lon;
+}
+
+
+function formatEbPopular() {
+    if ($("#dayyoos").data("skey") == 11){
+      return "popular=off&";
+    }
+    return "popular=on&";
+}
+
+function formatEbCategories() {
+
+  choice = $("#dayyoos").data("skey");
+
+  if (choice == 1)
+    return "q=party&categories=103%2C+104%2C+106%2C+110%2C+116%2C+119+%2C+199&";
+  if (choice == 2)
+    return "categories=103&";
+  if (choice == 3)
+    return "categories=110&";
+  if (choice == 4)
+    return "categories=119%2C+117%2C+115%2C+113%2C+110&";
+  if (choice == 5)
+    return "categories=108&";
+  if (choice == 6)
+    return "categories=109&";
+  if (choice == 7)
+    return "categories=111&";
+  if (choice == 8)
+    return "categories=102&";
+  if (choice == 9)
+    return "categories=114&";
+  if (choice == 10)
+    return "categories=105&";
+  return "";
+
+}
+
+function formatMuCategories() {
+
+  choice = $("#dayyoos").data("skey");
+
+  if (choice == 1)
+    return "category=5,21&";
+  if (choice == 2)
+   return "category=21&";
+  if (choice == 3)
+    return "category=10&";
+  if (choice == 4)
+    return "category=1,4,8,11,14,17&";
+  if (choice == 5)
+    return "category=9&";
+  if (choice == 6)
+    return "category=9&";
+  if (choice == 7)
+    return "category=4&";
+  if (choice == 8)
+    return "category=6&";
+  if (choice == 9)
+    return "category=22&";
+  if (choice == 10)
+    return "category=20,18,1&";
+  return "";
+}
+
+function showError(){
+	alert("Oops! Something went wrong :-(");
+}
