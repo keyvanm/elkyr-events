@@ -68,15 +68,20 @@
     <script>
       $(document).ready(function(){
 
-      if (!localStorage.pageLoadCount)
-      localStorage.pageLoadCount = 0;
-      localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount) + 1;
 
+
+      eb_url_string = "https://www.eventbriteapi.com/v3/events/search/?token=WLDLTCSQNTYUFBSE32R2&location.address=toronto&location.within=100km&";
+      
+
+      eb_popular = formatEbPopular();
+      eb_categories = formatEbCategories();
+
+      eb_url_string = eb_url_string + eb_popular + eb_categories;
 
      $.ajax({
-      url: "https://www.eventbriteapi.com/v3/events/search/?q=concert&popular=on&location.address=toronto&location.within=100km&venue.city=toronto&categories=103&token=WLDLTCSQNTYUFBSE32R2",
-      success: show_response,
-      error: show_error,
+      url: eb_url_string,
+      success: ebDisplay,
+      error: showError,
       jsonp: false,
       jsonpCallback: false,
       dataType: "json",
@@ -87,12 +92,47 @@
 
      });
 
-    function show_response(data){
-        $("#dayyoos").text(data);
+    function ebDisplay(data){
+        $("#dayyoos").text(data.events[0].name.text);
     }
 
-    function show_error(){
+    function showError(){
         alert("Oops! Please try again :-(")
+    }
+
+    function formatEbPopular() {
+        if (true){
+          return "popular=on&";
+        }
+        return "popular=on&";
+    }
+
+    function formatEbCategories() {
+
+      choice = $("#dayyoos").data("act_id");
+
+      if (choice == 1)
+        categories = "q=party&categories=103%2C+104%2C+106%2C+110%2C+116%2C+119+%2C+199&";
+      if (choice == 2)
+        return "categories=103&";
+      if (choice == 3)
+        return "categories=110&";
+      if (choice == 4)
+        return "categories=119%2C+117%2C+115%2C+113%2C+110&";
+      if (choice == 5)
+        return "categories=108&";
+      if (choice == 6)
+        return "categories=109&";
+      if (choice == 7)
+        return "categories=111&";
+      if (choice == 8)
+        return "categories=102&";
+      if (choice == 9)
+        return "categories=114&";
+      if (choice == 10)
+        return "categories=105&";
+      return "";
+
     }
 
 
